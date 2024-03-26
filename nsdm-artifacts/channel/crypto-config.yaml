@@ -1,0 +1,90 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# ---------------------------------------------------------------------------
+# "OrdererOrgs" - Definition of organizations managing orderer nodes
+# ---------------------------------------------------------------------------
+OrdererOrgs:
+  - Name: OrdererGeo
+    Domain: geologi.esdm.go.id
+    EnableNodeOUs: true
+
+    Specs:
+      - Hostname: orderer1
+        SANS:
+        - "localhost"
+
+  - Name: OrdererMin
+    Domain: minerba.esdm.go.id
+    EnableNodeOUs: true
+
+    Specs:
+      - Hostname: orderer2
+        SANS:
+        - "localhost"
+      - Hostname: orderer3
+        SANS:
+        - "localhost"
+      #- Hostname: orderer4
+      #  SANS:
+      #    - 127.0.0.1
+      #- Hostname: orderer5
+      #  SANS:
+      #    - 127.0.0.1
+
+# ---------------------------------------------------------------------------
+# "PeerOrgs" - Definition of organizations managing peer nodes
+# ---------------------------------------------------------------------------
+PeerOrgs:
+  - Name: Geologi                   #Org1
+    Domain: geologi.esdm.go.id
+    EnableNodeOUs: true
+
+    Template:
+      Count: 2
+      SANS:
+        - "localhost"
+    Users:
+      Count: 1
+
+  - Name: Minerba                           # Org2
+    Domain: minerba.esdm.go.id
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+      SANS:
+        - "localhost"
+    Users:
+      Count: 1
+
+  - Name: BadanUsaha1                           # Org3
+    Domain: bu1.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+    Users:
+      Count: 1
+
+  - Name: BadanUsaha2                           # Org4
+    Domain: bu2.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+    Users:
+      Count: 1
+
+  - Name: ThirdParty                           # Org5
+    Domain: thirdparty.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+    Users:
+      Count: 1
